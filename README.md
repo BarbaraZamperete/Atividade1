@@ -13,6 +13,7 @@ Este repositório contém todas as atividades desenvolvidas durante a disciplina
 
 - **pagina_memoria**: Demonstra o uso de memória virtual e páginas de memória em C.
 - **seminario_selection_sort**: Materiais do Seminário sobre o algoritimo Selection Sort. (Ainda em Desenvolvimento)
+- **arvores_binarias**: Código da implementação de uma árvore AVL e uma árvore rubro-negra em C++.
 
 ## Como Utilizar este Repositório
 
