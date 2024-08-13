@@ -1,51 +1,55 @@
-# Memória Virtual e Páginas de Memória em C
+# Atividades da Disciplina de Análise de Algoritmos - UFRR 2024.1
 
 ## Descrição
 
-Este projeto é uma atividade da disciplina de **Análise de Algoritmos** da **Universidade Federal de Roraima** (UFRR), realizada no semestre 2024.1. O objetivo do código é demonstrar o uso de memória virtual e páginas de memória em um programa escrito em C. Ele faz uso da função `mmap` para alocar dinamicamente uma página de memória, escreve dados nessa página, e em seguida, exibe o conteúdo escrito. Por fim, o código libera a memória alocada utilizando a função `munmap`.
+Este repositório contém todas as atividades desenvolvidas durante a disciplina de **Análise de Algoritmos** da **Universidade Federal de Roraima (UFRR)**, no semestre 2024.1. Cada atividade aborda diferentes tópicos relacionados ao estudo de algoritmos, e está organizada em diretórios específicos, cada um contendo seu próprio README com detalhes sobre o código e os materiais existentes lá.
 
-### Funcionalidades
+## Estrutura do Repositório
 
-- Alocação de uma página de memória virtual.
-- Escrita de uma string nessa memória.
-- Exibição do conteúdo da memória alocada.
-- Liberação da memória virtual após o uso.
+- Cada atividade está contida em seu próprio diretório, nomeado de acordo com o tema ou título da atividade.
+- Dentro de cada diretório, há um README específico explicando o propósito do código, como ele foi implementado, e instruções para execução.
 
+### Exemplo de Estrutura
 
-## Como Executar
+```plaintext
+.
+├── pagina_memoria/
+│   ├── memoria.c
+|   ├── memoria
+│   └── README.md
+|── README.md
+└──.gitignore
+```
 
-### Requisitos
+### Diretórios Principais
 
-- Sistema operacional Linux (testado no Linux Mint).
-- GCC (GNU Compiler Collection) instalado.
+- **pagina_memoria**: Demonstra o uso de memória virtual e páginas de memória em C.
 
-### Passos para Compilar e Executar
+## Como Utilizar este Repositório
 
-1. **Clone o repositório ou crie um arquivo de código-fonte:**
-   
-   Se estiver criando o arquivo manualmente:
-   ```bash
-   nano exemplo_mmap.c
-   ```
-
-   Em seguida, copie e cole o código no arquivo.
-
-2. **Compile o código usando o GCC:**
+1. **Clone o Repositório:**
 
    ```bash
-   gcc -o exemplo_mmap exemplo_mmap.c
+   git clone https://github.com/BarbaraZamperete/Atividades_AA_BarbaraZamperete_2024.1
    ```
 
-   Este comando compilará o código e gerará um executável chamado `exemplo_mmap`.
+2. **Navegue para o Diretório da Atividade:**
 
-3. **Execute o programa:**
+   Cada atividade está em seu próprio diretório. Navegue para o diretório desejado e siga as instruções fornecidas no README específico daquela atividade.
 
    ```bash
-   ./exemplo_mmap
+   cd diretorio_atividade
    ```
 
-   O programa imprimirá o tamanho da página de memória e o texto que foi escrito na memória virtual.
+3. **Leia o README da Atividade:**
+
+   Cada diretório de atividade contém um README com explicações detalhadas sobre o código, os conceitos abordados, e como compilar e executar o código.
+
+   ```bash
+   cat README.md
+   ```
+
 
 ## Autor
 
-Atividade realizada como parte da disciplina de **Análise de Algoritmos** na **Universidade Federal de Roraima (UFRR)**, semestre 2024.1. Feito pela aluna **Bárbara Zamperete**.
+Este repositório foi desenvolvido por **Bárbara Zamperete** como parte das atividades da disciplina de **Análise de Algoritmos** na **Universidade Federal de Roraima (UFRR)**, semestre 2024.1.
