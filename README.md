@@ -9,21 +9,10 @@ Este repositório contém todas as atividades desenvolvidas durante a disciplina
 - Cada atividade está contida em seu próprio diretório, nomeado de acordo com o tema ou título da atividade.
 - Dentro de cada diretório, há um README específico explicando o propósito do código, como ele foi implementado, e instruções para execução.
 
-### Exemplo de Estrutura
-
-```plaintext
-.
-├── pagina_memoria/
-│   ├── memoria.c
-|   ├── memoria
-│   └── README.md
-|── README.md
-└──.gitignore
-```
-
 ### Diretórios Principais
 
 - **pagina_memoria**: Demonstra o uso de memória virtual e páginas de memória em C.
+- **seminario_selection_sort**: Materiais do Seminário sobre o algoritimo Selection Sort. (Ainda em Desenvolvimento)
 
 ## Como Utilizar este Repositório
 
