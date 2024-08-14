@@ -5,6 +5,8 @@
 #include <fcntl.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <assert.h>
+#include <stdint.h>
 
 int main() {
     // Definir o tamanho da página de memória
@@ -75,11 +77,53 @@ int main() {
         total_bytes_read += bytes_read;
     }
 
-    // ((char *)page)[page_size - 1] = '\0'; // Assegura que o texto esteja terminado em '\0'
 
-    // Exibir o conteúdo das primeiras páginas
-    printf("Conteúdo das primeiras páginas da memória:\n");
-    printf("%.*s\n", (int)(2 * page_size), (char *)pages);
+    // Verificação dos últimos 5 bytes para garantir integridade, garantindo que os últimos 5 bytes alocados nas paginas de memoria
+    // são equivalentes ao 5 ultimos bytes do arquivo carregado
+    char *last_data_address = (char *)pages + file_size - 1;
+    assert(*(last_data_address - 4) == 'm');
+    assert(*(last_data_address - 3) == 'e');
+    assert(*(last_data_address - 2) == 'n');
+    assert(*(last_data_address - 1) == '.');
+    assert(*(last_data_address)     == '\n');
+
+    // Manipulação dos endereços de memória
+    uintptr_t data_address_as_int = (uintptr_t)pages;
+    uintptr_t data_address_page_number = data_address_as_int >> 12;
+    uintptr_t data_address_page_offset = data_address_as_int & 0xFFF;
+
+    uintptr_t last_data_address_as_int = (uintptr_t)last_data_address;
+    uintptr_t last_data_address_page_number = last_data_address_as_int >> 12;
+    uintptr_t last_data_address_page_offset = last_data_address_as_int & 0xFFF;
+
+    // Exibir informações sobre os endereços de memória
+    printf("\nFormat (HEX):            PAGE_NUMBER PAGE_OFFSET\n");
+    printf(
+        "Data address (HEX):      0x%lx %03lx\n",
+        data_address_page_number,
+        data_address_page_offset
+    );
+    printf(
+        "Last data address (HEX): 0x%lx %03lx\n",
+        last_data_address_page_number,
+        last_data_address_page_offset
+    );
+
+    printf("\nFormat (DEC):            PAGE_NUMBER PAGE_OFFSET\n");
+    printf(
+        "Data address (DEC):      %ld %03ld\n",
+        data_address_page_number,
+        data_address_page_offset
+    );
+    printf(
+        "Last data address (DEC): %ld %03ld\n",
+        last_data_address_page_number,
+        last_data_address_page_offset
+    );
+
+    // Exibir o conteúdo da primeira página
+    printf("\nConteúdo das primeiras páginas da memória:\n");
+    printf("%.*s\n", (int)(1 * page_size), (char *)pages);
 
     // Desmapear as páginas de memória
     if (munmap(pages, num_pages * page_size) == -1) {
