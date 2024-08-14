@@ -88,38 +88,38 @@ int main() {
     assert(*(last_data_address)     == '\n');
 
     // Manipulação dos endereços de memória
-    uintptr_t data_address_as_int = (uintptr_t)pages;
-    uintptr_t data_address_page_number = data_address_as_int >> 12;
-    uintptr_t data_address_page_offset = data_address_as_int & 0xFFF;
+    // uintptr_t data_address_as_int = (uintptr_t)pages;
+    // uintptr_t data_address_page_number = data_address_as_int >> 12;
+    // uintptr_t data_address_page_offset = data_address_as_int & 0xFFF;
 
-    uintptr_t last_data_address_as_int = (uintptr_t)last_data_address;
-    uintptr_t last_data_address_page_number = last_data_address_as_int >> 12;
-    uintptr_t last_data_address_page_offset = last_data_address_as_int & 0xFFF;
+    // uintptr_t last_data_address_as_int = (uintptr_t)last_data_address;
+    // uintptr_t last_data_address_page_number = last_data_address_as_int >> 12;
+    // uintptr_t last_data_address_page_offset = last_data_address_as_int & 0xFFF;
 
-    // Exibir informações sobre os endereços de memória
-    printf("\nFormat (HEX):            PAGE_NUMBER PAGE_OFFSET\n");
-    printf(
-        "Data address (HEX):      0x%lx %03lx\n",
-        data_address_page_number,
-        data_address_page_offset
-    );
-    printf(
-        "Last data address (HEX): 0x%lx %03lx\n",
-        last_data_address_page_number,
-        last_data_address_page_offset
-    );
+    // // Exibir informações sobre os endereços de memória
+    // printf("\nFormat (HEX):            PAGE_NUMBER PAGE_OFFSET\n");
+    // printf(
+    //     "Data address (HEX):      0x%lx %03lx\n",
+    //     data_address_page_number,
+    //     data_address_page_offset
+    // );
+    // printf(
+    //     "Last data address (HEX): 0x%lx %03lx\n",
+    //     last_data_address_page_number,
+    //     last_data_address_page_offset
+    // );
 
-    printf("\nFormat (DEC):            PAGE_NUMBER PAGE_OFFSET\n");
-    printf(
-        "Data address (DEC):      %ld %03ld\n",
-        data_address_page_number,
-        data_address_page_offset
-    );
-    printf(
-        "Last data address (DEC): %ld %03ld\n",
-        last_data_address_page_number,
-        last_data_address_page_offset
-    );
+    // printf("\nFormat (DEC):            PAGE_NUMBER PAGE_OFFSET\n");
+    // printf(
+    //     "Data address (DEC):      %ld %03ld\n",
+    //     data_address_page_number,
+    //     data_address_page_offset
+    // );
+    // printf(
+    //     "Last data address (DEC): %ld %03ld\n",
+    //     last_data_address_page_number,
+    //     last_data_address_page_offset
+    // );
 
     // Exibir o conteúdo da primeira página
     printf("\nConteúdo das primeiras páginas da memória:\n");
