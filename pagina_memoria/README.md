@@ -7,7 +7,7 @@ Este projeto é uma atividade da disciplina de **Análise de Algoritmos** da **U
 ### Funcionalidades
 
 - Alocação de uma página de memória virtual.
-- Escrita de uma string nessa memória.
+- Escrita de um arquivo "biblia.txt" nessa memória.
 - Exibição do conteúdo da memória alocada.
 - Liberação da memória virtual após o uso.
 
