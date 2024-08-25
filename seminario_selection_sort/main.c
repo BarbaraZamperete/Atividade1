@@ -25,15 +25,15 @@ int main() {
     char output_filename[1024];
     FILE *log_file;
 
-    // Abrir o diretório de números aleatórios
-    dir = opendir("/home/barbara/Documentos/Barbara/ufrr/Análise de Algoritmo/SelectionSortSeminario/numeros_aleatorios");
+    // Abrir o diretório de números aleatórios no diretório atual
+    dir = opendir("./numeros_aleatorios");
     if (dir == NULL) {
-        printf("Erro ao abrir o diretório /numeros_aleatorios\n");
+        printf("Erro ao abrir o diretório ./numeros_aleatorios\n");
         return 1;
     }
 
     // Abrir arquivo de log para salvar os tempos de execução
-    log_file = fopen("/home/barbara/Documentos/Barbara/ufrr/Análise de Algoritmo/SelectionSortSeminario/log_tempo_execucao.txt", "w");
+    log_file = fopen("./log_tempo_execucao.txt", "w");
     if (log_file == NULL) {
         printf("Erro ao criar o arquivo de log\n");
         return 1;
@@ -47,8 +47,8 @@ int main() {
     while ((entry = readdir(dir)) != NULL) {
         if (strstr(entry->d_name, ".txt") != NULL) {
             // Construir o caminho completo dos arquivos de entrada e saída
-            snprintf(input_filename, sizeof(input_filename), "/home/barbara/Documentos/Barbara/ufrr/Análise de Algoritmo/SelectionSortSeminario/numeros_aleatorios/%s", entry->d_name);
-            snprintf(output_filename, sizeof(output_filename), "/home/barbara/Documentos/Barbara/ufrr/Análise de Algoritmo/SelectionSortSeminario/numeros_ordenados/ordenados_%s", entry->d_name);
+            snprintf(input_filename, sizeof(input_filename), "./numeros_aleatorios/%s", entry->d_name);
+            snprintf(output_filename, sizeof(output_filename), "./numeros_ordenados/ordenados_%s", entry->d_name);
 
             // Abrir o arquivo de entrada para leitura
             FILE *input_file = fopen(input_filename, "r");
@@ -114,13 +114,13 @@ int main() {
 
     // Escrever o log com os dados ordenados
     for (int i = 0; i < file_count; i++) {
-        fprintf(log_file, "Arquivo: %s, Quantidade de números: %d, Tempo de execução: %.2f segundos\n", file_infos[i].filename, file_infos[i].quantity, file_infos[i].time_spent);
+        fprintf(log_file, "arquivo: %s, quantidade de numeros: %d, Tempo de execucao: %.2f segundos\n", file_infos[i].filename, file_infos[i].quantity, file_infos[i].time_spent);
     }
 
     // Fechar o arquivo de log
     fclose(log_file);
 
-    printf("Processamento concluído. Verifique o arquivo de log para os tempos de execução.\n");
+    printf("Processamento concluido. Verifique o arquivo de log para os tempos de execução.\n");
 
     return 0;
 }

@@ -1,58 +1,74 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import re
 
+# Obter o diretório atual
+current_directory = os.getcwd()
+
 # Arquivo de log e arquivo de saída do gráfico
-input_log_file = '/home/barbara/Documentos/Barbara/ufrr/Análise de Algoritmo/SelectionSortSeminario/log_tempo_execucao.txt'
-output_graph_file = '/home/barbara/Documentos/Barbara/ufrr/Análise de Algoritmo/SelectionSortSeminario/grafico_tempo_execucao.png'
+input_log_file = os.path.join(current_directory, 'log_tempo_execucao.txt')
+output_graph_file = os.path.join(current_directory, 'grafico_tempo_execucao.png')
+
+# Exibir o caminho completo do arquivo de log para verificar se está correto
+print(f"Caminho do arquivo de log: {input_log_file}")
 
 # Função para extrair dados do arquivo de log
 def parse_log_file(log_file):
     data = []
-    with open(log_file, 'r') as file:
-        for line in file:
-            match = re.search(r'Quantidade de números: (\d+), Tempo de execução: ([\d.]+) segundos', line)
-            if match:
-                quantity = int(match.group(1))
-                time = float(match.group(2))
-                data.append((quantity, time))
+    try:
+        with open(log_file, 'r', encoding='utf-8') as file:
+            content = file.read()
+            print(f"Conteúdo do arquivo de log:\n{content}")  # Exibir o conteúdo do arquivo de log
+
+            # Ajustar a expressão regular
+            for line in content.splitlines():
+                match = re.search(r'quantidade de numeros: (\d+), Tempo de execucao: ([\d.]+) segundos', line)
+                if match:
+                    quantity = int(match.group(1))
+                    time = float(match.group(2))
+                    data.append((quantity, time))
+    except FileNotFoundError:
+        print("Erro: O arquivo de log não foi encontrado.")
     return data
 
 # Carregar dados do log
 data = parse_log_file(input_log_file)
 df = pd.DataFrame(data, columns=['Quantidade', 'Tempo'])
 
+# Verificar se o DataFrame não está vazio
+if df.empty:
+    print("Erro: O DataFrame está vazio. Verifique se o arquivo de log foi lido corretamente.")
+    exit()
+
+# Exibir os dados carregados para debugging
+print(df)
+
 # Ordenar os dados por quantidade de números
 df = df.sort_values('Quantidade')
 
-# Criar o gráfico
-plt.figure(figsize=(10, 6))
-plt.plot(df['Quantidade'], df['Tempo'], marker='o', linestyle='-', color='b', label='Dados')
+# Plotar os dados reais
+plt.plot(df['Quantidade'], df['Tempo'], color='blue',  linestyle='-', label='Dados Reais')
 
-# Ajustar o eixo X para escala logarítmica e o eixo Y para escala linear
-plt.xscale('log')
-plt.yscale('linear')
-plt.xlabel('Quantidade de Números')
-plt.ylabel('Tempo de Execução (segundos)')
-plt.title('Quantidade de Números vs Tempo de Execução')
-plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+# Plotar a função de custo teórica
+quantidades = np.linspace(1000, 100000, 500)
+tempos_teoricos = (quantidades / 1000)**2 * 0.01  # Ajustar o fator de escala para comparar visualmente
+plt.plot(quantidades, tempos_teoricos, color='red', linestyle='--', label='O(n^2) Teórica')
+custo = ((quantidades/1000)**2*0.01-1)/2
+plt.plot(quantidades, custo, color='green', linestyle='--', label='T(n) = n^2-1/2')
 
-# Ajustar ticks no eixo X para mostrar potências de 10
-plt.gca().set_xticks([10**i for i in range(int(np.log10(df['Quantidade'].max())) + 1)])
-plt.gca().get_xaxis().set_major_formatter(plt.ScalarFormatter())
-
-# Ajustar curva de tendência polinomial
-coefficients = np.polyfit(np.log10(df['Quantidade']), df['Tempo'], 2)
-polynomial = np.poly1d(coefficients)
-x_values = np.linspace(df['Quantidade'].min(), df['Quantidade'].max(), 100)
-y_values = polynomial(np.log10(x_values))
-
-# Plotar a curva de tendência
-plt.plot(x_values, y_values, color='r', linestyle='--', label='Curva de Tendência')
-
+# Adicionar rótulos e legenda
+plt.xlabel('Quantidade de Entradas')
+plt.ylabel('Tempo de Execução (s)')
+plt.title('Tempo de Execução vs Quantidade de Entradas')
 plt.legend()
+plt.grid(True)
+
+#Salvar gráfico
 plt.savefig(output_graph_file)
+# Mostrar o gráfico
 plt.show()
+
 
 print(f"Gráfico salvo em {output_graph_file}")

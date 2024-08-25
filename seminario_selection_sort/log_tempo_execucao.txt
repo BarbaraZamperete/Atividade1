@@ -1,5 +1,9 @@
-Arquivo: numeros_1000.txt, Quantidade de números: 1000, Tempo de execução: 0.00 segundos
-Arquivo: numeros_5000.txt, Quantidade de números: 5000, Tempo de execução: 0.03 segundos
-Arquivo: numeros_10000.txt, Quantidade de números: 10000, Tempo de execução: 0.11 segundos
-Arquivo: numeros_50000.txt, Quantidade de números: 50000, Tempo de execução: 2.87 segundos
-Arquivo: numeros_100000.txt, Quantidade de números: 100000, Tempo de execução: 10.26 segundos
+arquivo: numeros_100.txt, quantidade de numeros: 100, Tempo de execucao: 0.00 segundos
+arquivo: numeros_1000.txt, quantidade de numeros: 1000, Tempo de execucao: 0.00 segundos
+arquivo: numeros_5000.txt, quantidade de numeros: 5000, Tempo de execucao: 0.02 segundos
+arquivo: numeros_10000.txt, quantidade de numeros: 10000, Tempo de execucao: 0.09 segundos
+arquivo: numeros_25000.txt, quantidade de numeros: 25000, Tempo de execucao: 0.88 segundos
+arquivo: numeros_50000.txt, quantidade de numeros: 50000, Tempo de execucao: 2.36 segundos
+arquivo: numeros_75000.txt, quantidade de numeros: 75000, Tempo de execucao: 5.37 segundos
+arquivo: numeros_100000.txt, quantidade de numeros: 100000, Tempo de execucao: 10.81 segundos
+arquivo: numeros_250000.txt, quantidade de numeros: 250000, Tempo de execucao: 63.93 segundos
