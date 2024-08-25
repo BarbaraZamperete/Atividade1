@@ -51,17 +51,19 @@ df = df.sort_values('Quantidade')
 # Plotar os dados reais
 plt.plot(df['Quantidade'], df['Tempo'], color='blue',  linestyle='-', label='Dados Reais')
 
+
 # Plotar a função de custo teórica
 quantidades = np.linspace(1000, 100000, 500)
-tempos_teoricos = (quantidades / 1000)**2 * 0.01  # Ajustar o fator de escala para comparar visualmente
+tempos_teoricos = (quantidades / 1000)**2*0.001  # Ajustar o fator de escala para comparar visualmente
 plt.plot(quantidades, tempos_teoricos, color='red', linestyle='--', label='O(n^2) Teórica')
-custo = ((quantidades/1000)**2*0.01-1)/2
-plt.plot(quantidades, custo, color='green', linestyle='--', label='T(n) = n^2-1/2')
+custo = (((quantidades/1000)**2-1)/2)*0.001
+# plt.plot(quantidades, custo, color='green', linestyle='--', label='T(n) = n^2-1/2')
+
 
 # Adicionar rótulos e legenda
 plt.xlabel('Quantidade de Entradas')
 plt.ylabel('Tempo de Execução (s)')
-plt.title('Tempo de Execução vs Quantidade de Entradas')
+plt.title('Tempo de Execução vs Quantidade de Entradas - 0.001')
 plt.legend()
 plt.grid(True)
 

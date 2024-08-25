@@ -17,6 +17,7 @@ int compare_file_info(const void *a, const void *b) {
 }
 
 void selection_sort(int vetor[], int max);
+void merge_sort(int vetor[], int left, int right);
 
 int main() {
     DIR *dir;
@@ -43,8 +44,11 @@ int main() {
     FileInfo file_infos[100];  // Ajustar o tamanho do array conforme necessário
     int file_count = 0;
 
+    int i=1;
     // Processar cada arquivo .txt no diretório
     while ((entry = readdir(dir)) != NULL) {
+        i = i+1;
+        printf("%d", i);
         if (strstr(entry->d_name, ".txt") != NULL) {
             // Construir o caminho completo dos arquivos de entrada e saída
             snprintf(input_filename, sizeof(input_filename), "./numeros_aleatorios/%s", entry->d_name);
@@ -77,6 +81,7 @@ int main() {
             // Medir o tempo de execução da ordenação
             clock_t start_time = clock();
             selection_sort(vetor, max);
+            // merge_sort(vetor, 0, max - 1);
             clock_t end_time = clock();
 
             // Calcular o tempo gasto em segundos
