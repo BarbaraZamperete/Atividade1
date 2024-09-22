@@ -16,14 +16,14 @@ def ler_log(arquivo):
     return np.array(tamanhos), np.array(tempos)
 
 # Ler os logs do Selection Sort e Merge Sort
-# tamanhos_ss, tempos_ss = ler_log('log_tempo_execucao.txt')
+tamanhos_ss, tempos_ss = ler_log('log_tempo_execucao.txt')
 tamanhos_ms, tempos_ms = ler_log('log_tempo_execucao_mergesort.txt')
 
 # Criar DataFrames separados para cada algoritmo
-# df_selection_sort = pd.DataFrame({
-#     'Input_Size': tamanhos_ss,
-#     'Time': tempos_ss
-# })
+df_selection_sort = pd.DataFrame({
+    'Input_Size': tamanhos_ss,
+    'Time': tempos_ss
+})
 
 df_merge_sort = pd.DataFrame({
     'Input_Size': tamanhos_ms,
@@ -31,13 +31,13 @@ df_merge_sort = pd.DataFrame({
 })
 
 # Função para plotar os dados
-def plot_data(ax, df_ms):
+def plot_data(ax, df_ss, df_ms):
     # Ordenar os dados por 'Input_Size' para garantir que os gráficos sejam ordenados
-    # df_ss = df_ss.sort_values('Input_Size')
+    df_ss = df_ss.sort_values('Input_Size')
     df_ms = df_ms.sort_values('Input_Size')
     
     # Plotar o tempo real de execução de cada algoritmo
-    # ax.plot(df_ss['Input_Size'], df_ss['Time'], label='Selection Sort')
+    ax.plot(df_ss['Input_Size'], df_ss['Time'], label='Selection Sort')
     ax.plot(df_ms['Input_Size'], df_ms['Time'], label='Merge Sort')
     
     # Adicionar as linhas de complexidade esperada com base no Merge Sort
@@ -49,7 +49,7 @@ def plot_data(ax, df_ms):
 
         # Usar um fator de escala que se alinhe com o tempo médio de execução do Merge Sort
         scale_factor_nlogn = np.mean(df_ms['Time']) / np.mean(n_log_n)
-        scale_factor_nsq = np.mean(df_ms['Time']) / np.mean(n_squared)
+        scale_factor_nsq = np.mean(df_ss['Time']) / np.mean(n_squared)
 
         # Escalar as curvas de complexidade
         n_log_n_scaled = n_log_n * scale_factor_nlogn
@@ -57,11 +57,11 @@ def plot_data(ax, df_ms):
 
         # Plotar as curvas escaladas
         ax.plot(input_sizes, n_log_n_scaled, 'k--', label='O(n log n)')
-        # ax.plot(input_sizes, n_squared_scaled, 'r--', label='O(n²)')
+        ax.plot(input_sizes, n_squared_scaled, 'r--', label='O(n²)')
     
     ax.set_xlabel('Tamanho da Entrada')
     ax.set_ylabel('Tempo de Execução (segundos)')
-    ax.set_title('Desempenho dos Algoritmos de Ordenação')
+    ax.set_title('Desempenho dos Algoritmos de Ordenação Merge Sort e Selection Sort juntos')
     ax.legend()
     ax.grid(True)
 
@@ -69,8 +69,8 @@ def plot_data(ax, df_ms):
 fig, ax = plt.subplots(figsize=(10, 6))
 
 # Plotar os dados
-plot_data(ax, df_merge_sort)
-plt.savefig("grafico_mergesort.png")
+plot_data(ax, df_selection_sort, df_merge_sort)
+plt.savefig("grafico_juntos.png")
 
 # Exibir o gráfico
 plt.show()
