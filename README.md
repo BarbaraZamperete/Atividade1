@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este repositório contém todas as atividades desenvolvidas durante a disciplina de **Análise de Algoritmos** da **Universidade Federal de Roraima (UFRR)**, no semestre 2024.1. Cada atividade aborda diferentes tópicos relacionados ao estudo de algoritmos, e está organizada em diretórios específicos, cada um contendo seu próprio README com detalhes sobre o código e os materiais existentes lá.
+Este repositório contém todas as atividades e tarefas de ponto extra desenvolvidas durante a disciplina de **Análise de Algoritmos** da **Universidade Federal de Roraima (UFRR)**, no semestre 2024.1. Cada atividade aborda diferentes tópicos relacionados ao estudo de algoritmos, e está organizada em diretórios específicos, cada um contendo seu próprio README com detalhes sobre o código e os materiais existentes lá.
 
 ## Estrutura do Repositório
 
@@ -14,6 +14,21 @@ Este repositório contém todas as atividades desenvolvidas durante a disciplina
 - **pagina_memoria**: Demonstra o uso de memória virtual e páginas de memória em C.
 - **seminario_selection_sort**: Materiais do Seminário sobre o algoritimo Selection Sort. (Ainda em Desenvolvimento)
 - **arvores_binarias**: Código da implementação de uma árvore AVL e uma árvore rubro-negra em C++.
+
+## Pontos Extra:
+
+### Artigos
+
+Além das atividades deste repositório, também foi realizado a apresentação do resumo de alguns artigos com o valor de ponto extra:
+
+- Artigo da Semana 13/03
+- Artigo da Semana 20/03
+- Artigo da Semana 02/04
+
+### Participação em um dos projetos de extensão do CIT
+
+- Atualmente participando do DataScience Aplicado a Saúde desde do início das aulas
+- Declaração de participação (TODO)
 
 ## Como Utilizar este Repositório
 
