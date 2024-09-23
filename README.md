@@ -28,7 +28,7 @@ Além das atividades deste repositório, também foi realizado a apresentação 
 ### Participação em um dos projetos de extensão do CIT
 
 - Atualmente participando do DataScience Aplicado a Saúde desde do início das aulas
-- Declaração de participação (TODO)
+- Declaração de participação (dataScience-declaracao.pdf)
 
 ## Como Utilizar este Repositório
 
